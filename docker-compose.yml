@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  back-runner:
+    image: soduco/back_runner
+    build:
+      context: .
+      dockerfile: soduco-back-runner.Dockerfile
+    volumes:
+      - ./resources/data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "back-builder"
+
+  back-builder:
+    image : soduco/back_builder
+    build:
+      context: .
+      dockerfile: soduco-back-cppbuilder.Dockerfile
+    working_dir: /app
+    tty: true
+    volumes:
+      - ./resources/code:/app/
