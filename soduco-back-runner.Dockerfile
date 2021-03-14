@@ -4,6 +4,7 @@ WORKDIR /app/
 ENV LD_LIBRARY_PATH=/app/lib \
     LC_ALL=C
 
+COPY resources/requirements.txt requirements.txt
 COPY resources/code/back back/
 COPY resources/code/resources/ resources/
 COPY resources/code/server/ server/
@@ -19,15 +20,7 @@ RUN apt-get update -y \
         libpoppler-cpp0v5 \
         aspell-fr \
         libtesseract4 \
-    && pip install unidecode \
-        filelock \
-        regex \
-        gunicorn \
-        fastspellchecker \
-        pillow \
-        python-dotenv \
-        flask \
-        pytest \
+    && pip install -r requirements.txt \
     && mkdir -p /data/annotations
 
 CMD gunicorn -t 500 --bind 0.0.0.0:8000 --proxy-allow-from='*' server:app

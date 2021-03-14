@@ -1,0 +1,9 @@
+unidecode
+filelock
+regex
+gunicorn
+fastspellchecker
+pillow
+python-dotenv
+flask
+pytest
