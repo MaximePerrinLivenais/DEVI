@@ -26,4 +26,4 @@ COPY resources/code/back back/
 COPY resources/code/resources/ resources/
 COPY resources/code/server/ server/
 
-#CMD gunicorn -t 500 --bind 0.0.0.0:8000 --proxy-allow-from='*' server:app
+CMD gunicorn -t 500 --bind 0.0.0.0:8000 --proxy-allow-from='*' server:app
