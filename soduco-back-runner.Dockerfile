@@ -5,12 +5,8 @@ ENV LD_LIBRARY_PATH=/app/lib \
     LC_ALL=C
 
 COPY resources/requirements.txt requirements.txt
-COPY resources/code/back back/
-COPY resources/code/resources/ resources/
-COPY resources/code/server/ server/
 
-COPY resources/code/build/soduco-py37-0.1.1-Linux/back back/
-COPY resources/code/build/soduco-py37-0.1.1-Linux/lib lib/
+ADD resources/code/build/soduco-py37-0.1.1-Linux.tar.gz .
 COPY --from=soduco/back_builder:latest /usr/local/lib64/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/
 
 RUN apt-get update -y \
@@ -21,6 +17,13 @@ RUN apt-get update -y \
         aspell-fr \
         libtesseract4 \
     && pip install -r requirements.txt \
-    && mkdir -p /data/annotations
+    && mkdir -p /data/annotations \
+    && mv soduco-py37-0.1.1-Linux/lib . \
+    && mv soduco-py37-0.1.1-Linux/back . \
+    && rm -rf soduco-py37-0.1.1-Linux
 
-CMD gunicorn -t 500 --bind 0.0.0.0:8000 --proxy-allow-from='*' server:app
+COPY resources/code/back back/
+COPY resources/code/resources/ resources/
+COPY resources/code/server/ server/
+
+#CMD gunicorn -t 500 --bind 0.0.0.0:8000 --proxy-allow-from='*' server:app
