@@ -1,24 +1,23 @@
+# Setting docker-compose version.
 version: "3.9"
+
 services:
   back-runner:
-    image: soduco/back_runner
+    # Setting image name
+    image: soduco/stage_4_back_runner
+
+    # Build settings
     build:
+      # Set context
       context: .
-      dockerfile: soduco-back-runner.Dockerfile
+      # Set the dockerfile to run
+      dockerfile: stage_4.Dockerfile
+
+    # Set volumes
     volumes:
       - ./resources/data:/data
       - ./resources/annotations:/data/annotations
-      - ./resources/directories:/data/directories
+
+    # Set port bindings
     ports:
       - "8000:8000"
-    depends_on:
-      - "back-builder"
-
-  back-builder:
-    image : soduco/back_builder
-    build:
-      context: .
-      dockerfile: soduco-back-cppbuilder.Dockerfile
-    working_dir: /app
-    volumes:
-      - ./resources/code:/app/

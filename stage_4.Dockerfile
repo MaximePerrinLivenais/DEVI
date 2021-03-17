@@ -20,6 +20,9 @@ RUN apt-get update -y \
     && conan remote add lrde-public https://artifactory.lrde.epita.fr/artifactory/api/conan/lrde-public \
     && sh build.sh
 
+
+# ----- Back runner -------
+
 FROM python:3.7.10-slim
 WORKDIR /app
 
