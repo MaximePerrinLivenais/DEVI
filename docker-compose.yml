@@ -7,6 +7,8 @@ services:
       dockerfile: soduco-back-runner.Dockerfile
     volumes:
       - ./resources/data:/data
+      - ./resources/annotations:/data/annotations
+      - ./resources/directories:/data/directories
     ports:
       - "8000:8000"
     depends_on:
@@ -18,6 +20,5 @@ services:
       context: .
       dockerfile: soduco-back-cppbuilder.Dockerfile
     working_dir: /app
-    tty: true
     volumes:
       - ./resources/code:/app/

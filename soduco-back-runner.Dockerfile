@@ -16,8 +16,9 @@ RUN apt-get update -y \
         libpoppler-cpp0v5 \
         aspell-fr \
         libtesseract4 \
-    && pip install -r requirements.txt \
-    && mkdir -p /data/annotations \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir -r requirements.txt \
+    #&& mkdir -p /data/annotations \
     && mv soduco-py37-0.1.1-Linux/lib . \
     && mv soduco-py37-0.1.1-Linux/back . \
     && rm -rf soduco-py37-0.1.1-Linux
