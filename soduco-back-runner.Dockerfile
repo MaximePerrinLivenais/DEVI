@@ -27,4 +27,6 @@ COPY resources/code/back back/
 COPY resources/code/resources/ resources/
 COPY resources/code/server/ server/
 
+EXPOSE 8000
+
 CMD gunicorn -t 500 --bind 0.0.0.0:8000 --proxy-allow-from='*' server:app
