@@ -1,0 +1,23 @@
+# Setting docker-compose version.
+version: "3.9"
+
+services:
+  back-runner:
+    # Setting image name
+    image: soduco/multi_stage_back_runner
+
+    # Build settings
+    build:
+      # Set context
+      context: .
+      # Set the dockerfile to run
+      dockerfile: multi-stage.Dockerfile
+
+    # Set volumes
+    volumes:
+      - ./resources/data:/data
+      - ./resources/annotations:/data/annotations
+
+    # Set port bindings
+    ports:
+      - "8000:8000"
