@@ -16,7 +16,7 @@ services:
     # Set volumes
     volumes:
       - ./resources/data:/data
-      - ./resources/annotations:/data/annotations
+      - ./resources/data/annotations:/data/annotations
 
     # Set port bindings
     ports:

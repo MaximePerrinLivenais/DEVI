@@ -13,7 +13,7 @@ docker run --rm -it -v ${PWD}/resources/code:/app/ soduco/back_builder sh build.
 
 ```bash
 docker build -t soduco/back_runner -f soduco-back-runner.Dockerfile .
-docker run -v ${PWD}/resources/data:/data -v ${PWD}/resources/annotations:/data/annotations -p 8000:8000 soduco/back_runner
+docker run -v ${PWD}/resources/data:/data -v ${PWD}/resources/data/annotations:/data/annotations -p 8000:8000 soduco/back_runner
 ```
 
 # STEP 3 : Docker Compose
@@ -28,5 +28,5 @@ docker-compose up
 
 ```bash
 docker build -t soduco/multi_stage -f multi-stage.Dockerfile .
-docker run -v ${PWD}/resources/data:/data -v ${PWD}/resources/annotations:/data/annotations -p 8000:8000 soduco/multi_stage
+docker run -v ${PWD}/resources/data:/data -v ${PWD}/resources/data/annotations:/data/annotations -p 8000:8000 soduco/multi_stage
 ```
