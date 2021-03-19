@@ -27,6 +27,6 @@ docker-compose up
 # STEP 4 : Multi-stage
 
 ```bash
-docker build -t soduco/multi_stage -f soduco-multi-stage.Dockerfile .
+docker build -t soduco/multi_stage -f multi-stage.Dockerfile .
 docker run -v ${PWD}/resources/data:/data -v ${PWD}/resources/annotations:/data/annotations -p 8000:8000 soduco/multi_stage
 ```

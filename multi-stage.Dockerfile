@@ -53,6 +53,7 @@ COPY --from=builder /app/build/soduco-py37-0.1.1-Linux.tar.gz /app
 # Extract libstd++.so from builder
 COPY --from=builder /usr/local/lib64/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/
 
+# Installing apt dependencies
 RUN apt-get update -y \
     && apt-get install -y tesseract-ocr-fra \
         libfreeimage3 \
@@ -66,7 +67,7 @@ RUN apt-get update -y \
     # Installing python dependencies with requirements.txt \
     && pip install --no-cache-dir -r requirements.txt \
     \
-    # Untar the build tar \
+    # Untar the built tar \
     && tar xvf soduco-py37-0.1.1-Linux.tar.gz \
     \
     # Move lib and back directories \

@@ -18,7 +18,7 @@ ADD resources/code/build/soduco-py37-0.1.1-Linux.tar.gz .
 # Extract libstd++.so from the cpp build image.
 COPY --from=soduco/back_builder:latest /usr/local/lib64/libstdc++.so.6 /usr/lib/x86_64-linux-gnu/
 
-# Installing all dependencies
+# Installing apt dependencies
 RUN apt-get update -y \
     && apt-get install -y tesseract-ocr-fra \
         libfreeimage3 \
