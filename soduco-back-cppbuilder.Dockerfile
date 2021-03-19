@@ -22,5 +22,5 @@ RUN apt-get update -y \
         wheel \
         conan \
     \
-    # Add remove to conan \
+    # Add remote to conan \
     && conan remote add lrde-public https://artifactory.lrde.epita.fr/artifactory/api/conan/lrde-public

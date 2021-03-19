@@ -4,14 +4,14 @@ version: "3.9"
 services:
   back-runner:
     # Setting image name
-    image: soduco/stage_4_back_runner
+    image: soduco/multi_stage_back_runner
 
     # Build settings
     build:
       # Set context
       context: .
       # Set the dockerfile to run
-      dockerfile: stage_4.Dockerfile
+      dockerfile: multi-stage.Dockerfile
 
     # Set volumes
     volumes:
